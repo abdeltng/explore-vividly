@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { waLink, WhatsAppIcon } from "./whatsapp";
-const HERO_VIDEO_URL = "/__l5e/assets-v1/d6927eb0-7bce-47ba-97f6-95c695a78a73/hero-tuktuk.mp4";
+const HERO_VIDEO_URL = "/__l5e/assets-v1/62635987-530f-42b9-8233-365640389824/hero-tuktuk.mp4";
 
 export function Hero() {
   return (
