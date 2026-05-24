@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { waLink, WhatsAppIcon } from "./whatsapp";
-import heroVideo from "../../../public/hero-tuktuk.mp4.asset.json";
+const HERO_VIDEO_URL = "/__l5e/assets-v1/d6927eb0-7bce-47ba-97f6-95c695a78a73/hero-tuktuk.mp4";
 
 export function Hero() {
   return (
@@ -9,7 +9,7 @@ export function Hero() {
         autoPlay muted loop playsInline
         poster=""
         className="absolute inset-0 w-full h-full object-cover"
-        src={heroVideo.url}
+        src={HERO_VIDEO_URL}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy/50 to-green/60" />
       <div className="absolute inset-0 grain opacity-60" />
