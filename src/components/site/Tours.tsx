@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { waLink, WhatsAppIcon } from "./whatsapp";
 import oneHour from "@/assets/tour-classic.jpg";
 import twoHours from "@/assets/tour-golden.jpg";
@@ -15,6 +16,7 @@ type Tour = {
   meta: string[];
   price: string;
   waMsg: string;
+  detailsTo?: string;
 };
 
 const tours: Tour[] = [
@@ -22,7 +24,8 @@ const tours: Tour[] = [
     icon: "🛺", title: "Tour 1 Hour",
     desc: "A quick but unforgettable spin through Madrid's most iconic landmarks — perfect for first-time visitors.",
     meta: ["⏱ 1 hr","👥 Max 6","📍 City Center"], price: "€35",
-    waMsg: "Hello! I want to book the *Tour 1 Hour* €35/person 🛺" },
+    waMsg: "Hello! I want to book the *Tour 1 Hour* €35/person 🛺",
+    detailsTo: "/tours/1-hour" },
   { img: twoHours, badge: "🌅 Best Value", badgeStyle: "bg-gold text-navy",
     icon: "🌇", title: "Tour 2 Hours",
     desc: "Go deeper into the city — historic plazas, royal palace and hidden corners with plenty of photo stops.",
@@ -88,6 +91,14 @@ export function Tours() {
                 >
                   <WhatsAppIcon className="w-4 h-4" /> Book on WhatsApp
                 </a>
+                {t.detailsTo && (
+                  <Link
+                    to={t.detailsTo}
+                    className="mt-2 w-full text-center border-2 border-navy text-navy hover:bg-navy hover:text-cream font-extrabold text-sm py-3 rounded-full transition-all flex items-center justify-center gap-2"
+                  >
+                    View Tour Details →
+                  </Link>
+                )}
               </div>
             </div>
           </motion.article>
