@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { waLink, WhatsAppIcon } from "./whatsapp";
-import classic from "@/assets/tour-classic.jpg";
-import retiro from "@/assets/tour-retiro.jpg";
-import golden from "@/assets/tour-golden.jpg";
-import hidden from "@/assets/tour-hidden.jpg";
-import family from "@/assets/tour-family.jpg";
-import vip from "@/assets/tour-vip.jpg";
+import oneHour from "@/assets/tour-classic.jpg";
+import twoHours from "@/assets/tour-golden.jpg";
+import threeHours from "@/assets/tour-retiro.jpg";
+import vipImg from "@/assets/tour-vip.jpg";
 
 type Tour = {
   img: string;
@@ -20,36 +18,26 @@ type Tour = {
 };
 
 const tours: Tour[] = [
-  { img: classic, badge: "⭐ Most Popular", badgeStyle: "bg-red text-white",
-    icon: "🏛️", title: "Madrid Classic Tour",
-    desc: "The essential Madrid experience — Puerta del Sol, Plaza Mayor, Palacio Real and more iconic landmarks.",
-    meta: ["⏱ 1.5 hrs","👥 Max 6","📍 City Center"], price: "€35",
-    waMsg: "Hello! I want to book the *Madrid Classic Tour* €35/person 🛺" },
-  { img: retiro, badge: "🌿 Nature", badgeStyle: "bg-gold text-navy",
-    icon: "🌳", title: "Retiro & Green Madrid",
-    desc: "Glide through Buen Retiro Park, the Crystal Palace and the green lungs of Madrid at a relaxed pace.",
-    meta: ["⏱ 1 hr","👥 Max 6","📍 Retiro Park"], price: "€28",
-    waMsg: "Hello! I want to book the *Retiro & Green Madrid Tour* €28/person 🌳" },
-  { img: golden, badge: "🌅 Sunset", badgeStyle: "bg-gold text-navy",
-    icon: "🌇", title: "Golden Hour Madrid",
-    desc: "Experience Madrid at sunset with stunning panoramic views and perfect photo stops across the city.",
-    meta: ["⏱ 2 hrs","👥 Max 6","📍 Various"], price: "€45",
-    waMsg: "Hello! I want to book the *Golden Hour Madrid Tour* €45/person 🌅" },
-  { img: hidden, badge: "🗝️ Hidden Gems", badgeStyle: "bg-gold text-navy",
-    icon: "🗺️", title: "Hidden Madrid",
-    desc: "Secret courtyards, local tapas spots and stories the guidebooks never tell. Go beyond the tourist trail.",
-    meta: ["⏱ 2 hrs","👥 Max 6","📍 La Latina"], price: "€38",
-    waMsg: "Hello! I want to book the *Hidden Madrid Tour* €38/person 🗝️" },
-  { img: family, badge: "👨‍👩‍👧 Family", badgeStyle: "bg-gold text-navy",
-    icon: "👨‍👩‍👧‍👦", title: "Family Fun Tour",
-    desc: "A kid-friendly adventure through Madrid's most colourful spots — games, stories and smiles guaranteed!",
-    meta: ["⏱ 1.5 hrs","👥 Max 6","📍 City Center"], price: "€30",
-    waMsg: "Hello! I want to book the *Family Fun Tour* €30/person 👨‍👩‍👧" },
-  { img: vip, badge: "👑 VIP", badgeStyle: "bg-navy text-gold",
+  { img: oneHour, badge: "⭐ Most Popular", badgeStyle: "bg-red text-white",
+    icon: "🛺", title: "Tour 1 Hour",
+    desc: "A quick but unforgettable spin through Madrid's most iconic landmarks — perfect for first-time visitors.",
+    meta: ["⏱ 1 hr","👥 Max 6","📍 City Center"], price: "€35",
+    waMsg: "Hello! I want to book the *Tour 1 Hour* €35/person 🛺" },
+  { img: twoHours, badge: "🌅 Best Value", badgeStyle: "bg-gold text-navy",
+    icon: "🌇", title: "Tour 2 Hours",
+    desc: "Go deeper into the city — historic plazas, royal palace and hidden corners with plenty of photo stops.",
+    meta: ["⏱ 2 hrs","👥 Max 6","📍 Various"], price: "€55",
+    waMsg: "Hello! I want to book the *Tour 2 Hours* €55/person 🌅" },
+  { img: threeHours, badge: "🌿 Full Experience", badgeStyle: "bg-green text-white",
+    icon: "🗺️", title: "Tour 3 Hours",
+    desc: "The ultimate Madrid adventure — every must-see spot, lush parks and a tapas break along the way.",
+    meta: ["⏱ 3 hrs","👥 Max 6","📍 All Madrid"], price: "€75",
+    waMsg: "Hello! I want to book the *Tour 3 Hours* €75/person 🗺️" },
+  { img: vipImg, badge: "👑 VIP", badgeStyle: "bg-navy text-gold",
     icon: "⭐", title: "Private VIP Tour",
     desc: "Your Madrid, your rules. Choose your own route, pace and stops. Fully personalised and exclusively yours.",
-    meta: ["⏱ Flexible","👥 Max 6","📍 Anywhere"], price: "€60",
-    waMsg: "Hello! I want to book the *Private VIP Tour* €60/person 👑" },
+    meta: ["⏱ Flexible","👥 Max 6","📍 Anywhere"], price: "€120",
+    waMsg: "Hello! I want to book the *Private VIP Tour* €120/person 👑" },
 ];
 
 export function Tours() {
@@ -61,7 +49,7 @@ export function Tours() {
           CHOOSE YOUR <em className="not-italic text-gold">ADVENTURE</em>
         </h2>
         <p className="mt-4 text-foreground/70 text-lg max-w-xl mx-auto">
-          Six unique tuk tuk routes through the heart of Madrid — for every mood, group, and occasion.
+          Four unique tuk tuk routes through the heart of Madrid — for every schedule and occasion.
         </p>
       </div>
 
@@ -72,7 +60,7 @@ export function Tours() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+            transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
             whileHover={{ y: -8 }}
             className="bg-card rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] flex flex-col group"
           >
