@@ -1,26 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { Stats } from "@/components/site/Stats";
+import { Tours } from "@/components/site/Tours";
+import { WhyUs } from "@/components/site/WhyUs";
+import { Experience } from "@/components/site/Experience";
+import { Gallery } from "@/components/site/Gallery";
+import { Testimonials } from "@/components/site/Testimonials";
+import { BookCTA } from "@/components/site/BookCTA";
+import { Footer } from "@/components/site/Footer";
+import { StickyWA } from "@/components/site/StickyWA";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "My TukTuk Madrid – Explore Madrid in a Unique Way!" },
+      { name: "description", content: "Electric tuk tuk tours through the heart of Madrid. 6 routes, local drivers, 3 languages. Book on WhatsApp in 30 seconds." },
+      { property: "og:title", content: "My TukTuk Madrid – Explore Madrid in a Unique Way!" },
+      { property: "og:description", content: "Electric tuk tuk tours through Madrid. Book on WhatsApp." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Stats />
+        <Tours />
+        <WhyUs />
+        <Experience />
+        <Gallery />
+        <Testimonials />
+        <BookCTA />
+      </main>
+      <Footer />
+      <StickyWA />
+    </>
+  );
 }
