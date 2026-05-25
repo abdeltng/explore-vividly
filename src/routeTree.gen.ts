@@ -10,11 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToursVipRouteImport } from './routes/tours.vip'
+import { Route as Tours3HoursRouteImport } from './routes/tours.3-hours'
+import { Route as Tours2HoursRouteImport } from './routes/tours.2-hours'
 import { Route as Tours1HourRouteImport } from './routes/tours.1-hour'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToursVipRoute = ToursVipRouteImport.update({
+  id: '/tours/vip',
+  path: '/tours/vip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Tours3HoursRoute = Tours3HoursRouteImport.update({
+  id: '/tours/3-hours',
+  path: '/tours/3-hours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Tours2HoursRoute = Tours2HoursRouteImport.update({
+  id: '/tours/2-hours',
+  path: '/tours/2-hours',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Tours1HourRoute = Tours1HourRouteImport.update({
@@ -26,27 +44,50 @@ const Tours1HourRoute = Tours1HourRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
+  '/tours/3-hours': typeof Tours3HoursRoute
+  '/tours/vip': typeof ToursVipRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
+  '/tours/3-hours': typeof Tours3HoursRoute
+  '/tours/vip': typeof ToursVipRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
+  '/tours/3-hours': typeof Tours3HoursRoute
+  '/tours/vip': typeof ToursVipRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/tours/1-hour'
+  fullPaths:
+    | '/'
+    | '/tours/1-hour'
+    | '/tours/2-hours'
+    | '/tours/3-hours'
+    | '/tours/vip'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/tours/1-hour'
-  id: '__root__' | '/' | '/tours/1-hour'
+  to: '/' | '/tours/1-hour' | '/tours/2-hours' | '/tours/3-hours' | '/tours/vip'
+  id:
+    | '__root__'
+    | '/'
+    | '/tours/1-hour'
+    | '/tours/2-hours'
+    | '/tours/3-hours'
+    | '/tours/vip'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Tours1HourRoute: typeof Tours1HourRoute
+  Tours2HoursRoute: typeof Tours2HoursRoute
+  Tours3HoursRoute: typeof Tours3HoursRoute
+  ToursVipRoute: typeof ToursVipRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +97,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/vip': {
+      id: '/tours/vip'
+      path: '/tours/vip'
+      fullPath: '/tours/vip'
+      preLoaderRoute: typeof ToursVipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/3-hours': {
+      id: '/tours/3-hours'
+      path: '/tours/3-hours'
+      fullPath: '/tours/3-hours'
+      preLoaderRoute: typeof Tours3HoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/2-hours': {
+      id: '/tours/2-hours'
+      path: '/tours/2-hours'
+      fullPath: '/tours/2-hours'
+      preLoaderRoute: typeof Tours2HoursRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tours/1-hour': {
@@ -71,6 +133,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Tours1HourRoute: Tours1HourRoute,
+  Tours2HoursRoute: Tours2HoursRoute,
+  Tours3HoursRoute: Tours3HoursRoute,
+  ToursVipRoute: ToursVipRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
