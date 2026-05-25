@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Tours2HoursRouteImport } from './routes/tours.2-hours'
 import { Route as Tours1HourRouteImport } from './routes/tours.1-hour'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Tours2HoursRoute = Tours2HoursRouteImport.update({
+  id: '/tours/2-hours',
+  path: '/tours/2-hours',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Tours1HourRoute = Tours1HourRouteImport.update({
@@ -26,27 +32,31 @@ const Tours1HourRoute = Tours1HourRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/tours/1-hour': typeof Tours1HourRoute
+  '/tours/2-hours': typeof Tours2HoursRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/tours/1-hour'
+  fullPaths: '/' | '/tours/1-hour' | '/tours/2-hours'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/tours/1-hour'
-  id: '__root__' | '/' | '/tours/1-hour'
+  to: '/' | '/tours/1-hour' | '/tours/2-hours'
+  id: '__root__' | '/' | '/tours/1-hour' | '/tours/2-hours'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Tours1HourRoute: typeof Tours1HourRoute
+  Tours2HoursRoute: typeof Tours2HoursRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/2-hours': {
+      id: '/tours/2-hours'
+      path: '/tours/2-hours'
+      fullPath: '/tours/2-hours'
+      preLoaderRoute: typeof Tours2HoursRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tours/1-hour': {
@@ -71,7 +88,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Tours1HourRoute: Tours1HourRoute,
+  Tours2HoursRoute: Tours2HoursRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
