@@ -86,6 +86,9 @@ const cancellation = [
 
 const waMsg = "Hello! I want to book the *Madrid Express 1 Hour Tuk-Tuk Tour* €35/person 🛺";
 
+// 💳 Replace with your card payment link
+const CARD_PAYMENT_URL = "#card-payment-1h";
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <motion.section
@@ -203,12 +206,20 @@ function OneHourTourPage() {
           >
             <h3 className="display text-gold text-3xl md:text-4xl tracking-[2px] mb-3">READY TO RIDE?</h3>
             <p className="text-cream/80 mb-6">Book in 30 seconds on WhatsApp — instant confirmation.</p>
-            <a
-              href={waLink(waMsg)} target="_blank" rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5"
-            >
-              <WhatsAppIcon className="w-5 h-5" /> Book this Tour — €35
-            </a>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <a
+                href={waLink(waMsg)} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="w-5 h-5" /> Book on WhatsApp — €35
+              </a>
+              <a
+                href={CARD_PAYMENT_URL} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-[#d4a84c] text-navy font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5"
+              >
+                💳 Pay by Card — €35
+              </a>
+            </div>
           </motion.div>
         </div>
       </main>
