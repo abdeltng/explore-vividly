@@ -30,18 +30,20 @@ const tours: Tour[] = [
     icon: "🌇", title: "Tour 2 Hours",
     desc: "Go deeper into the city — historic plazas, royal palace and hidden corners with plenty of photo stops.",
     meta: ["⏱ 2 hrs","👥 Max 6","📍 Various"], price: "€55",
-    waMsg: "Hello! I want to book the *Tour 2 Hours* €55/person 🌅" },
-    
+    waMsg: "Hello! I want to book the *Tour 2 Hours* €55/person 🌅",
+    detailsTo: "/tours/2-hours" },
   { img: threeHours, badge: "🌿 Full Experience", badgeStyle: "bg-green text-white",
     icon: "🗺️", title: "Tour 3 Hours",
     desc: "The ultimate Madrid adventure — every must-see spot, lush parks and a tapas break along the way.",
     meta: ["⏱ 3 hrs","👥 Max 6","📍 All Madrid"], price: "€75",
-    waMsg: "Hello! I want to book the *Tour 3 Hours* €75/person 🗺️" },
+    waMsg: "Hello! I want to book the *Tour 3 Hours* €75/person 🗺️",
+    detailsTo: "/tours/3-hours" },
   { img: vipImg, badge: "👑 VIP", badgeStyle: "bg-navy text-gold",
     icon: "⭐", title: "Private VIP Tour",
     desc: "Your Madrid, your rules. Choose your own route, pace and stops. Fully personalised and exclusively yours.",
     meta: ["⏱ Flexible","👥 Max 6","📍 Anywhere"], price: "€120",
-    waMsg: "Hello! I want to book the *Private VIP Tour* €120/person 👑" },
+    waMsg: "Hello! I want to book the *Private VIP Tour* €120/person 👑",
+    detailsTo: "/tours/vip" },
 ];
 
 export function Tours() {
