@@ -31,7 +31,7 @@ const tours: Tour[] = [
     desc: "Go deeper into the city — historic plazas, royal palace and hidden corners with plenty of photo stops.",
     meta: ["⏱ 2 hrs","👥 Max 6","📍 Various"], price: "€55",
     waMsg: "Hello! I want to book the *Tour 2 Hours* €55/person 🌅" },
-  // detailsTo set below
+    
   { img: threeHours, badge: "🌿 Full Experience", badgeStyle: "bg-green text-white",
     icon: "🗺️", title: "Tour 3 Hours",
     desc: "The ultimate Madrid adventure — every must-see spot, lush parks and a tapas break along the way.",
