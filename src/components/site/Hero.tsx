@@ -5,9 +5,12 @@ const HERO_VIDEO_URL = "/__l5e/assets-v1/5fe2b576-3388-4dd2-aed0-68c92af2b3b4/he
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <video
+      <motion.video
         autoPlay muted loop playsInline
         poster=""
+        initial={{ scale: 1.15 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 12, ease: "easeOut" }}
         className="absolute inset-0 w-full h-full object-cover"
         src={HERO_VIDEO_URL}
       />
