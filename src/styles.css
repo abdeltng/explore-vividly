@@ -4,8 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Pacifico&display=swap");
-
 @theme inline {
   --font-display: "Bebas Neue", sans-serif;
   --font-body: "Nunito", sans-serif;
