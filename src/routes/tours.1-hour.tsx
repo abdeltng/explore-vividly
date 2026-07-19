@@ -4,6 +4,12 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { StickyWA } from "@/components/site/StickyWA";
 import { waLink, WhatsAppIcon } from "@/components/site/whatsapp";
+import {
+  TourHeroMedia,
+  TourHeroContent,
+  HeroItem,
+  TourSection,
+} from "@/components/site/tour-motion";
 import heroImg from "@/assets/tour-1hour.jpg";
 
 export const Route = createFileRoute("/tours/1-hour")({
@@ -89,20 +95,7 @@ const waMsg = "Hello! I want to book the *Madrid Express 1 Hour Tuk-Tuk Tour* �
 // 💳 Replace with your card payment link
 const CARD_PAYMENT_URL = "#card-payment-1h";
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5 }}
-      className="mb-12"
-    >
-      <h2 className="display text-navy text-3xl md:text-4xl tracking-[2px] mb-5">{title}</h2>
-      {children}
-    </motion.section>
-  );
-}
+const Section = TourSection;
 
 function OneHourTourPage() {
   return (
@@ -111,28 +104,29 @@ function OneHourTourPage() {
       <main>
         {/* Hero */}
         <section className="relative h-[70vh] min-h-[480px] overflow-hidden">
-          <img src={heroImg} alt="Madrid Express Tuk-Tuk Tour" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/40 to-navy/90" />
+          <TourHeroMedia src={heroImg} alt="Madrid Express Tuk-Tuk Tour" />
           <div className="relative z-10 h-full flex flex-col justify-end px-[5%] pb-12 max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <Link to="/" className="inline-block text-cream/80 hover:text-gold text-sm font-bold mb-4">← Back to all tours</Link>
-              <span className="inline-block bg-red text-white font-extrabold text-xs tracking-[2px] uppercase px-4 py-1.5 rounded-full mb-4">⭐ Most Popular</span>
-              <h1 className="display text-cream tracking-[2px] leading-none" style={{ fontSize: "clamp(2.2rem,6vw,5rem)" }}>
-                MADRID EXPRESS <em className="not-italic text-gold">1 HOUR</em> TUK-TUK TOUR
-              </h1>
-              <p className="mt-4 text-cream/85 text-lg max-w-2xl">
+            <TourHeroContent>
+              <HeroItem>
+                <Link to="/" className="inline-block text-cream/80 hover:text-gold text-sm font-bold mb-4 transition-colors">← Back to all tours</Link>
+              </HeroItem>
+              <HeroItem>
+                <span className="inline-block bg-red text-white font-extrabold text-xs tracking-[2px] uppercase px-4 py-1.5 rounded-full mb-4">⭐ Most Popular</span>
+              </HeroItem>
+              <HeroItem as="h1" className="display text-cream tracking-[2px] leading-none" >
+                <span style={{ fontSize: "clamp(2.2rem,6vw,5rem)" }} className="block">
+                  MADRID EXPRESS <em className="not-italic text-gold">1 HOUR</em> TUK-TUK TOUR
+                </span>
+              </HeroItem>
+              <HeroItem as="p" className="mt-4 text-cream/85 text-lg max-w-2xl">
                 City highlights in 60 minutes — comfortable, eco-friendly and unforgettable.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-cream font-bold text-sm">
+              </HeroItem>
+              <HeroItem className="mt-6 flex flex-wrap gap-3 text-cream font-bold text-sm">
                 <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full">⏱ 60 minutes</span>
                 <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full">👥 Up to 4 / tuk-tuk</span>
                 <span className="bg-gold text-navy px-4 py-2 rounded-full">€35 / person</span>
-              </div>
-            </motion.div>
+              </HeroItem>
+            </TourHeroContent>
           </div>
         </section>
 
@@ -198,27 +192,31 @@ function OneHourTourPage() {
           </Section>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 bg-navy text-cream rounded-2xl p-8 md:p-10 text-center shadow-[var(--shadow-elegant)]"
           >
             <h3 className="display text-gold text-3xl md:text-4xl tracking-[2px] mb-3">READY TO RIDE?</h3>
             <p className="text-cream/80 mb-6">Book in 30 seconds on WhatsApp — instant confirmation.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <a
+              <motion.a
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href={waLink(waMsg)} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full"
               >
                 <WhatsAppIcon className="w-5 h-5" /> Book on WhatsApp — €35
-              </a>
-              <a
+              </motion.a>
+              <motion.a
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href={CARD_PAYMENT_URL} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-gold hover:bg-[#d4a84c] text-navy font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-[#d4a84c] text-navy font-extrabold text-base px-8 py-4 rounded-full"
               >
                 💳 Pay by Card — €35
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>
