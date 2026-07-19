@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { waLink, WhatsAppIcon } from "./whatsapp";
 import oneHour from "@/assets/tour-1hour.jpg";
 import twoHours from "@/assets/tour-2hours.jpg";
-import threeHours from "@/assets/tour-retiro.jpg";
+import threeHours from "@/assets/tour-3hours.jpg";
 import vipImg from "@/assets/tour-vip.jpg";
 
 type Tour = {
