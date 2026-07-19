@@ -70,10 +70,10 @@ export function Tours() {
             whileHover={{ y: -8 }}
             className="bg-card rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] flex flex-col group"
           >
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-72 sm:h-80 overflow-hidden">
               <img src={t.img} alt={t.title} loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              <span className={`absolute top-3.5 left-3.5 ${t.badgeStyle} font-extrabold text-[0.7rem] tracking-wide uppercase px-3.5 py-1 rounded-full`}>{t.badge}</span>
+              <span className={`absolute top-3.5 left-3.5 ${t.badgeStyle} font-extrabold text-[0.7rem] tracking-wide uppercase px-3.5 py-1 rounded-full shadow-sm`}>{t.badge}</span>
             </div>
             <div className="p-6 flex flex-col flex-1">
               <div className="text-2xl mb-1">{t.icon}</div>
