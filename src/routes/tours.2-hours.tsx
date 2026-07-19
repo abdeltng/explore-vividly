@@ -4,7 +4,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { StickyWA } from "@/components/site/StickyWA";
 import { waLink, WhatsAppIcon } from "@/components/site/whatsapp";
-import heroImg from "@/assets/tour-golden.jpg";
+import heroImg from "@/assets/tour-2hours.jpg";
 
 export const Route = createFileRoute("/tours/2-hours")({
   head: () => ({
