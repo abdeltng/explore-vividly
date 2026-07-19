@@ -4,6 +4,12 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { StickyWA } from "@/components/site/StickyWA";
 import { waLink, WhatsAppIcon } from "@/components/site/whatsapp";
+import {
+  TourHeroMedia,
+  TourHeroContent,
+  HeroItem,
+  TourSection,
+} from "@/components/site/tour-motion";
 import heroImg from "@/assets/tour-vip.jpg";
 
 export const Route = createFileRoute("/tours/vip")({
@@ -69,14 +75,7 @@ const waMsg = "Hello! I'd like to book the *Private VIP Tuk-Tuk Tour* — please
 // 💳 Replace with your card payment link
 const CARD_PAYMENT_URL = "#card-payment-vip";
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <motion.section initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5 }} className="mb-12">
-      <h2 className="display text-navy text-3xl md:text-4xl tracking-[2px] mb-5">{title}</h2>
-      {children}
-    </motion.section>
-  );
-}
+const Section = TourSection;
 
 function VIPPage() {
   return (
@@ -84,25 +83,30 @@ function VIPPage() {
       <Nav />
       <main>
         <section className="relative h-[70vh] min-h-[480px] overflow-hidden">
-          <img src={heroImg} alt="Private VIP Tuk-Tuk Tour Madrid" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/95" />
+          <TourHeroMedia src={heroImg} alt="Private VIP Tuk-Tuk Tour Madrid" />
           <div className="relative z-10 h-full flex flex-col justify-end px-[5%] pb-12 max-w-7xl mx-auto">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-              <Link to="/" className="inline-block text-cream/80 hover:text-gold text-sm font-bold mb-4">← Back to all tours</Link>
-              <span className="inline-block bg-navy border border-gold text-gold font-extrabold text-xs tracking-[2px] uppercase px-4 py-1.5 rounded-full mb-4">👑 Private VIP</span>
-              <h1 className="display text-cream tracking-[2px] leading-none" style={{ fontSize: "clamp(2.2rem,6vw,5rem)" }}>
-                PRIVATE <em className="not-italic text-gold">VIP</em> TUK-TUK TOUR
-              </h1>
-              <p className="mt-4 text-cream/85 text-lg max-w-2xl">
+            <TourHeroContent>
+              <HeroItem>
+                <Link to="/" className="inline-block text-cream/80 hover:text-gold text-sm font-bold mb-4 transition-colors">← Back to all tours</Link>
+              </HeroItem>
+              <HeroItem>
+                <span className="inline-block bg-navy border border-gold text-gold font-extrabold text-xs tracking-[2px] uppercase px-4 py-1.5 rounded-full mb-4">👑 Private VIP</span>
+              </HeroItem>
+              <HeroItem as="h1" className="display text-cream tracking-[2px] leading-none">
+                <span style={{ fontSize: "clamp(2.2rem,6vw,5rem)" }} className="block">
+                  PRIVATE <em className="not-italic text-gold">VIP</em> TUK-TUK TOUR
+                </span>
+              </HeroItem>
+              <HeroItem as="p" className="mt-4 text-cream/85 text-lg max-w-2xl">
                 Your Madrid, your rules. A fully personalised electric tuk-tuk experience designed exclusively around you.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-cream font-bold text-sm">
+              </HeroItem>
+              <HeroItem className="mt-6 flex flex-wrap gap-3 text-cream font-bold text-sm">
                 <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full">⏱ Flexible duration</span>
                 <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full">👤 Private guide</span>
                 <span className="bg-white/10 backdrop-blur px-4 py-2 rounded-full">🥂 Premium service</span>
                 <span className="bg-gold text-navy px-4 py-2 rounded-full">From €120 / person</span>
-              </div>
-            </motion.div>
+              </HeroItem>
+            </TourHeroContent>
           </div>
         </section>
 
@@ -154,19 +158,21 @@ function VIPPage() {
             </ul>
           </Section>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 bg-gradient-to-br from-navy to-[#0a1530] text-cream rounded-2xl p-8 md:p-10 text-center shadow-[var(--shadow-elegant)] border border-gold/30">
             <h3 className="display text-gold text-3xl md:text-4xl tracking-[2px] mb-3">RESERVE YOUR PRIVATE TOUR</h3>
             <p className="text-cream/80 mb-6">Tell us your wishes — we craft the perfect Madrid for you.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <a href={waLink(waMsg)} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5">
+              <motion.a whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                href={waLink(waMsg)} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-wa hover:bg-[#1db954] text-white font-extrabold text-base px-8 py-4 rounded-full">
                 <WhatsAppIcon className="w-5 h-5" /> Request VIP on WhatsApp
-              </a>
-              <a href={CARD_PAYMENT_URL} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-gold hover:bg-[#d4a84c] text-navy font-extrabold text-base px-8 py-4 rounded-full transition-all hover:-translate-y-0.5">
+              </motion.a>
+              <motion.a whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                href={CARD_PAYMENT_URL} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-[#d4a84c] text-navy font-extrabold text-base px-8 py-4 rounded-full">
                 💳 Pay by Card
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>
